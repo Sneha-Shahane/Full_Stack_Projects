@@ -1,0 +1,274 @@
+:root {
+  --bg-dark: #0d0d0d;
+  --bg-light: #f5f5f5;
+  --text-dark: #ffffff;
+  --text-light: #111;
+  --accent: #7f5af0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  transition: 0.4s;
+}
+
+body.dark {
+  background: linear-gradient(135deg,
+   #0f3460,
+    #060622,
+    #494778,
+    #060622,
+    #0f3460
+  );
+  color: #ffffff;
+}
+
+
+body.light {
+  background: var(--bg-light);
+  color: var(--text-light);
+}
+
+/* TOGGLE */
+.toggle-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background-color: rgb(62, 8, 128);
+  border-radius: 25px;
+ 
+}
+
+.switch {
+  position: relative;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background: #555;
+  border-radius: 20px;
+  inset: 0;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  font-size: 40px;
+  padding: 70px 20px;   /* reduced from 100px */
+}
+
+.hero h1 {
+  font-size: 4rem;
+}
+
+.buttons {
+  margin-top: 10px;   /* moves buttons up */
+}
+
+
+.btn {
+padding: 10px 20px;
+  background: transparent;
+  border-radius: 10px;
+    border: 1px solid var(--accent);
+
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  display :inline-flex;
+  hover {
+    opacity: 0.85;
+  }
+}
+
+.btn.outline {
+  background: transparent;
+  border: 1px solid var(--accent);
+  text-align: center;padding: 10px 20px;
+  background: transparent;
+  border-radius: 10px;
+    border: 1px solid var(--accent);
+
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  hover {
+    opacity: 0.85;
+  }
+  
+}
+
+/* SECTIONS */
+.section {
+    font-size: medium;
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+
+  border-radius: 16px;
+
+  /* THIS is what you're missing 👇 */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  /* Prevent background bleeding into border */
+  background-clip: padding-box;
+}
+
+.glass {
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.05);
+  border-radius: 25px;
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+/* SKILLS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 100px;
+  background-color: transparent;
+}
+
+.card {
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.08);
+}
+
+/* PROJECT */
+.project-card {
+  background: rgba(255,255,255,0.06);
+  padding: 25px;
+  border-radius: 15px;
+  hover {
+    background: rgba(255,255,255,0.1);
+  }
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.7;
+}
+.card h4 {
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.btn-sm {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  border-radius: 20px;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.btn-sm:hover {
+  opacity: 0.85;
+}
+
+.card a {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+
+ .nav-btn {
+  margin: 0;                 /* FIX: remove huge margin */
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+    white-space: nowrap; 
+}
+.nav-left {
+  display: flex;
+  gap: 12px;
+  flex-wrap: nowrap;   /* 🔥 THIS is the key */
+}
+.top-nav {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+
+  display: flex;
+  align-items: center;
+
+  width: calc(100% - 40px);  /* 🔥 THIS FIXES IT */
+}
+
+.section-glass {
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.05);
+  border-radius: 25px;
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 20px;
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.05);
+  border-radius: 25px;
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 20px;
+}
+.section-contact {
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.05);
+  border-radius: 25px;
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 20px;
+   backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.05);
+  border-radius: 25px;
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+body.light {
+  background: linear-gradient(135deg,
+    #bc5eac,
+    #341726,
+    #8b2c60
+  );
+  color: #ffffff;
+}
