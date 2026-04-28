@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online SaaS Subscription Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 text-slate-900">
+  <nav class="bg-white border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <h1 class="text-xl font-bold">Online SaaS Subscription Platform</h1>
+        <p class="text-sm text-slate-500">LocalStorage dashboard with auth, roles, and CRUD</p>
+      </div>
+      <div id="navUser" class="hidden items-center gap-3">
+        <span id="userBadge" class="text-sm font-medium"></span>
+        <button id="logoutBtn" class="px-3 py-2 rounded bg-slate-900 text-white text-sm">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto p-4">
+    <section id="authView" class="grid md:grid-cols-2 gap-6">
+      <form id="loginForm" class="bg-white border border-slate-200 rounded-lg p-5 space-y-3">
+        <h2 class="text-lg font-semibold">Login</h2>
+        <input id="loginEmail" class="w-full border rounded px-3 py-2" type="email" placeholder="Email" required />
+        <input id="loginPassword" class="w-full border rounded px-3 py-2" type="password" placeholder="Password" required />
+        <button class="w-full bg-blue-600 text-white rounded px-3 py-2">Login</button>
+        <p class="text-xs text-slate-500">Admin: admin@example.com / admin123</p>
+      </form>
+
+      <form id="signupForm" class="bg-white border border-slate-200 rounded-lg p-5 space-y-3">
+        <h2 class="text-lg font-semibold">Signup</h2>
+        <input id="signupName" class="w-full border rounded px-3 py-2" placeholder="Full name" required />
+        <input id="signupEmail" class="w-full border rounded px-3 py-2" type="email" placeholder="Email" required />
+        <input id="signupPassword" class="w-full border rounded px-3 py-2" type="password" placeholder="Password" required />
+        <select id="signupRole" class="w-full border rounded px-3 py-2"><option>User</option><option>Admin</option></select>
+        <button class="w-full bg-emerald-600 text-white rounded px-3 py-2">Create Account</button>
+      </form>
+    </section>
+
+    <section id="appView" class="hidden space-y-6">
+      <div class="grid sm:grid-cols-3 gap-4">
+        <div class="bg-white border border-slate-200 rounded-lg p-4"><p class="text-sm text-slate-500">Total Tenants</p><p id="totalCount" class="text-3xl font-bold">0</p></div>
+        <div class="bg-white border border-slate-200 rounded-lg p-4"><p class="text-sm text-slate-500">Current Role</p><p id="roleValue" class="text-3xl font-bold">-</p></div>
+        <div class="bg-white border border-slate-200 rounded-lg p-4"><p class="text-sm text-slate-500">Active MRR</p><p id="metricValue" class="text-3xl font-bold">0</p></div>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6">
+        <form id="itemForm" class="bg-white border border-slate-200 rounded-lg p-5 space-y-3">
+          <h2 id="formTitle" class="text-lg font-semibold">Add Tenant</h2>
+          <input type="hidden" id="editId" />
+          <input id="field1" class="w-full border rounded px-3 py-2" placeholder="Company" required />
+          <input id="field2" class="w-full border rounded px-3 py-2" placeholder="Plan" required />
+          <input id="field3" class="w-full border rounded px-3 py-2" placeholder="MRR" required />
+          <select id="status" class="w-full border rounded px-3 py-2"></select>
+          <button class="w-full bg-blue-600 text-white rounded px-3 py-2">Save Tenant</button>
+        </form>
+
+        <div class="lg:col-span-2 bg-white border border-slate-200 rounded-lg p-5">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4">
+            <h2 class="text-lg font-semibold">Tenants</h2>
+            <input id="searchInput" class="border rounded px-3 py-2" placeholder="Search records" />
+          </div>
+          <div id="itemsList" class="grid md:grid-cols-2 gap-3"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

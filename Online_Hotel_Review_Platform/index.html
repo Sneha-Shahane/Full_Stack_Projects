@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Hotel Review Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 text-slate-900">
+  <nav class="bg-white border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <h1 class="text-xl font-bold">Online Hotel Review Platform</h1>
+        <p class="text-sm text-slate-500">LocalStorage powered mini full-stack dashboard</p>
+      </div>
+      <div id="navUser" class="hidden items-center gap-3">
+        <span id="userBadge" class="text-sm font-medium"></span>
+        <button id="logoutBtn" class="px-3 py-2 rounded bg-slate-900 text-white text-sm">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto p-4">
+    <section id="authView" class="grid md:grid-cols-2 gap-6 items-start">
+      <div class="bg-white border border-slate-200 rounded-lg p-5">
+        <h2 class="text-lg font-semibold mb-4">Login</h2>
+        <form id="loginForm" class="space-y-3">
+          <input id="loginEmail" class="w-full border rounded px-3 py-2" placeholder="Email" type="email" required />
+          <input id="loginPassword" class="w-full border rounded px-3 py-2" placeholder="Password" type="password" required />
+          <button class="w-full bg-blue-600 text-white rounded px-3 py-2">Login</button>
+        </form>
+        <p class="text-xs text-slate-500 mt-3">Demo admin: admin@example.com / admin123</p>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-lg p-5">
+        <h2 class="text-lg font-semibold mb-4">Signup</h2>
+        <form id="signupForm" class="space-y-3">
+          <input id="signupName" class="w-full border rounded px-3 py-2" placeholder="Full name" required />
+          <input id="signupEmail" class="w-full border rounded px-3 py-2" placeholder="Email" type="email" required />
+          <input id="signupPassword" class="w-full border rounded px-3 py-2" placeholder="Password" type="password" required />
+          <select id="signupRole" class="w-full border rounded px-3 py-2">
+            <option>User</option>
+            <option>Admin</option>
+          </select>
+          <button class="w-full bg-emerald-600 text-white rounded px-3 py-2">Create Account</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="appView" class="hidden space-y-6">
+      <div class="grid sm:grid-cols-3 gap-4">
+        <div class="bg-white border border-slate-200 rounded-lg p-4">
+          <p class="text-sm text-slate-500">Total Reviews</p>
+          <p id="totalCount" class="text-3xl font-bold">0</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-lg p-4">
+          <p class="text-sm text-slate-500">Admin Only</p>
+          <p id="adminCount" class="text-3xl font-bold">0</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-lg p-4">
+          <p class="text-sm text-slate-500">Average rating</p>
+          <p id="metricValue" class="text-3xl font-bold">0</p>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-6">
+        <form id="itemForm" class="bg-white border border-slate-200 rounded-lg p-5 space-y-3">
+          <h2 id="formTitle" class="text-lg font-semibold">Add Review</h2>
+          <input type="hidden" id="editId" />
+          <input id="field1" class="w-full border rounded px-3 py-2" placeholder="Hotel" required />
+          <input id="field2" class="w-full border rounded px-3 py-2" placeholder="Guest" required />
+          <input id="field3" class="w-full border rounded px-3 py-2" placeholder="Rating" required />
+          <select id="status" class="w-full border rounded px-3 py-2"></select>
+          <button class="w-full bg-blue-600 text-white rounded px-3 py-2">Save Review</button>
+        </form>
+
+        <div class="lg:col-span-2 bg-white border border-slate-200 rounded-lg p-5">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4">
+            <h2 class="text-lg font-semibold">Reviews</h2>
+            <input id="searchInput" class="border rounded px-3 py-2" placeholder="Search Reviews" />
+          </div>
+          <div id="itemsList" class="grid md:grid-cols-2 gap-3"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
