@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Online Recruitment Automation System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-slate-100 text-slate-900">
+  <div class="min-h-screen lg:grid lg:grid-cols-[260px_1fr]">
+    <aside class="bg-slate-950 text-white p-5">
+      <h1 class="text-lg font-bold">Online Recruitment Automation System</h1>
+      <nav class="mt-6 space-y-1 text-sm">
+        <a class="block rounded bg-white/10 px-3 py-2" href="#overview">Overview</a>
+        <a class="block rounded px-3 py-2 hover:bg-white/10" href="#records">Pipeline Items</a>
+        <a class="block rounded px-3 py-2 hover:bg-white/10" href="#automation">AI Simulation</a>
+        <a class="block rounded px-3 py-2 hover:bg-white/10" href="#logs">Activity Logs</a>
+      </nav>
+    </aside>
+    <main>
+      <header class="bg-white border-b border-slate-200 px-5 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p class="text-sm text-slate-500">Enterprise dashboard</p>
+          <h2 class="text-2xl font-bold">Pipeline Item Operations</h2>
+        </div>
+        <div class="flex items-center gap-3">
+          <span id="userBadge" class="text-sm font-medium"></span>
+          <button id="logoutBtn" class="rounded bg-slate-900 text-white px-3 py-2 text-sm">Logout</button>
+        </div>
+      </header>
+
+      <section class="p-5 space-y-6">
+        <div id="statsGrid" class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4"></div>
+
+        <div class="grid xl:grid-cols-[1.4fr_.8fr] gap-6">
+          <section class="bg-white rounded-lg border border-slate-200 p-5">
+            <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between mb-4">
+              <h3 class="font-semibold">Performance Trend</h3>
+              <select id="statusFilter" class="border rounded px-3 py-2 text-sm"></select>
+            </div>
+            <canvas id="mainChart" height="110"></canvas>
+          </section>
+          <section id="automation" class="bg-white rounded-lg border border-slate-200 p-5">
+            <h3 class="font-semibold">AI / Automation Simulation</h3>
+            <p class="mt-2 text-sm text-slate-500">Move high-fit candidates to screening</p>
+            <div id="aiInsights" class="mt-4 space-y-3"></div>
+          </section>
+        </div>
+
+        <div class="grid xl:grid-cols-[.85fr_1.35fr] gap-6" id="records">
+          <form id="recordForm" class="bg-white rounded-lg border border-slate-200 p-5 space-y-3">
+            <h3 id="formTitle" class="font-semibold">Create Pipeline Item</h3>
+            <input id="editId" type="hidden" />
+            <input id="field1" class="w-full border rounded px-3 py-2" placeholder="Candidate" required />
+            <input id="field2" class="w-full border rounded px-3 py-2" placeholder="Role" required />
+            <input id="field3" class="w-full border rounded px-3 py-2" placeholder="Fit" required />
+            <select id="recordStatus" class="w-full border rounded px-3 py-2"></select>
+            <button class="w-full rounded bg-pink-600 text-white py-2 font-semibold">Save Record</button>
+          </form>
+
+          <section class="bg-white rounded-lg border border-slate-200 p-5">
+            <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between mb-4">
+              <h3 class="font-semibold">Pipeline Items</h3>
+              <input id="searchInput" class="border rounded px-3 py-2 text-sm" placeholder="Search..." />
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead class="text-left text-slate-500 border-b">
+                  <tr><th class="py-2">Candidate</th><th>Role</th><th>Fit</th><th>Status</th><th>Actions</th></tr>
+                </thead>
+                <tbody id="recordRows"></tbody>
+              </table>
+            </div>
+            <div class="mt-4 flex items-center justify-between">
+              <button id="prevPage" class="px-3 py-2 rounded border text-sm">Previous</button>
+              <span id="pageInfo" class="text-sm text-slate-500"></span>
+              <button id="nextPage" class="px-3 py-2 rounded border text-sm">Next</button>
+            </div>
+          </section>
+        </div>
+
+        <section id="logs" class="bg-white rounded-lg border border-slate-200 p-5">
+          <h3 class="font-semibold">Activity Logs</h3>
+          <div id="activityList" class="mt-4 grid md:grid-cols-2 gap-3 text-sm"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <div id="toastHost" class="fixed bottom-4 right-4 space-y-2"></div>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
