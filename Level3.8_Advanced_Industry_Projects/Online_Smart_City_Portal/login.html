@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Online Smart City Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 text-slate-900">
+  <main class="min-h-screen grid lg:grid-cols-2">
+    <section class="hidden lg:flex bg-slate-950 text-white p-10 flex-col justify-between">
+      <div>
+        <p class="text-sm uppercase tracking-widest text-cyan-300">Enterprise access</p>
+        <h1 class="mt-4 text-4xl font-bold">Online Smart City Portal</h1>
+        <p class="mt-4 text-slate-300">Role-based login for Admin, Manager, and User personas.</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 text-sm">
+        <div class="rounded bg-white/10 p-3">Mock API</div>
+        <div class="rounded bg-white/10 p-3">Local DB</div>
+        <div class="rounded bg-white/10 p-3">Activity Logs</div>
+      </div>
+    </section>
+    <section class="p-6 grid place-items-center">
+      <div class="w-full max-w-md bg-white rounded-lg border border-slate-200 p-6">
+        <h2 class="text-2xl font-bold">Welcome back</h2>
+        <p class="text-sm text-slate-500 mt-1">Demo admin: admin@example.com / admin123</p>
+        <form id="loginForm" class="mt-6 space-y-3">
+          <input id="loginEmail" type="email" class="w-full border rounded px-3 py-2" placeholder="Email" required />
+          <input id="loginPassword" type="password" class="w-full border rounded px-3 py-2" placeholder="Password" required />
+          <button class="w-full rounded bg-cyan-600 text-white py-2 font-semibold">Login</button>
+        </form>
+        <div class="my-6 border-t"></div>
+        <h3 class="font-semibold">Create user</h3>
+        <form id="signupForm" class="mt-3 space-y-3">
+          <input id="signupName" class="w-full border rounded px-3 py-2" placeholder="Name" required />
+          <input id="signupEmail" type="email" class="w-full border rounded px-3 py-2" placeholder="Email" required />
+          <input id="signupPassword" type="password" class="w-full border rounded px-3 py-2" placeholder="Password" required />
+          <select id="signupRole" class="w-full border rounded px-3 py-2"><option>User</option><option>Manager</option><option>Admin</option></select>
+          <button class="w-full rounded bg-slate-900 text-white py-2">Signup</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <div id="toastHost" class="fixed bottom-4 right-4 space-y-2"></div>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
